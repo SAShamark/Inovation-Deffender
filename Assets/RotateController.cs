@@ -5,7 +5,11 @@ using UnityEngine;
 public class RotateController : MonoBehaviour
 {
     private float _rotationSpeed = 10;
+    const int x = 0;
+    private void Start()
+    {
 
+    }
     private void Update()
     {
         LookAtEnemy();
@@ -13,7 +17,8 @@ public class RotateController : MonoBehaviour
     private void LookAtEnemy()
     {
         Vector3 direction = SearchEnemy.Nearest.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(direction);        
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
     }
 }

@@ -16,11 +16,14 @@ public class ShootingAtEnemies : MonoBehaviour
 
     private void Start()
     {
-        _timeForShooting = 1;
         _startPositionX = transform.position.x;
         _startPositionZ = transform.position.z;
     }
     private void FixedUpdate()
+    {
+        CheckForMovement();
+    }
+    private void CheckForMovement()
     {
         if (transform.position.x == _startPositionX && transform.position.z == _startPositionZ)
         {
@@ -34,7 +37,6 @@ public class ShootingAtEnemies : MonoBehaviour
         {
             _startPositionX = transform.position.x;
             _startPositionZ = transform.position.z;
-            _justStay = true;
         }
     }
     IEnumerator Shooting()
@@ -47,6 +49,7 @@ public class ShootingAtEnemies : MonoBehaviour
         }
         yield return new WaitForSeconds(_timeForShooting);
         _justStay = true;
+        
 
 
     }

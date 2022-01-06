@@ -8,9 +8,11 @@ public class SearchEnemy : MonoBehaviour
     private GameObject[] _enemy;
     public GameObject _closest;
     public static Transform Nearest;
+
     private void Start()
     {
         _enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        Nearest = FindClosestEnemy().transform;
     }
     private void Update()
     {
